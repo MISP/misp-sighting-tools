@@ -39,9 +39,10 @@ if __name__ == '__main__':
 	args = parser.parse_args()
 
 	p = subprocess.Popen(["tshark","-n","-r", args.read,
-				      "-Tfields", "-eframe.time_epoch",
-      				  "-Tfields", "-eip.src",
-					  "-Tfields", "-eip.dst"],
+				      "-Tfields",
+                      "-eframe.time_epoch",
+                      "-eip.src",
+                      "-eip.dst"],
 					  stdout=subprocess.PIPE, shell=False)
 
 #FIXME Create multiple json docs when large pcaps are used.
