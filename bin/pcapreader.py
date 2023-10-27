@@ -10,6 +10,13 @@ except ModuleNotFoundError as e:
     print ("ERROR: Could not find keys file with misp_url and misp_key")
     sys.exit(1)
 
+# By default check certificate but it could be overriden by keys
+misp_verifycert=True
+try:
+    from keys import misp_verifycert
+except ImportError as e:
+    pass
+
 import argparse
 import subprocess
 import json
@@ -22,7 +29,7 @@ except NameError:
 
 
 def init(url, key):
-    return PyMISP(url, key, False, 'json')
+    return PyMISP(url, key, misp_verifycert, 'json')
 
 if __name__ == '__main__':
     misp = init(misp_url, misp_key)
