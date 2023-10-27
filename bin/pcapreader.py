@@ -71,7 +71,7 @@ for line in p.stdout:
 			jdoc = json.dumps(doc)
 			if args.verbose:
 				print ("Input JSON to MISP: {}".format(jdoc))
-			res = misp.set_sightings(jdoc)
+			res = misp.add_sighting(doc)
 			if 'message' in res:
 				if res['message'].find('Could not add Sighting'):
 					counters['non-sighted'] += 1
