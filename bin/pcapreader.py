@@ -68,8 +68,8 @@ for line in p.stdout:
 			doc["source"] = args.source
 			doc["type"] = args.type
 			doc["timestamp"] = str(ts)
-			jdoc = json.dumps(doc)
 			if args.verbose:
+				jdoc = json.dumps(doc)
 				print ("Input JSON to MISP: {}".format(jdoc))
 			res = misp.add_sighting(doc)
 			if 'message' in res:
