@@ -2,7 +2,13 @@
 # -*- coding: utf-8 -*-
 
 from pymisp import PyMISP
-from keys import misp_url, misp_key
+import sys
+try:
+    from keys import misp_url, misp_key
+except ModuleNotFoundError as e:
+    print ("ERROR: Could not find keys file with misp_url and misp_key")
+    sys.exit(1)
+
 import argparse
 import subprocess
 import json
